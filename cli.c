@@ -33,7 +33,7 @@ int main(){
 		perror("connect:");
 	}
 	//ソケットで文字列を送る
-	if(write(sockfd,(void *)buff,5) == -1){
+	if(write(sockfd,(void *)buff,sizeof(buff)) == -1){
 		perror("write:");
 	}
 	//ソケットを終了する
