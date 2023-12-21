@@ -39,6 +39,9 @@ int main(){
   listen(sockfd,5);
   //要求を受け入れる
   new_sockfd=accept(sockfd,NULL,NULL);
+  if(new_sockfd == -1){
+		perror("accept: ");
+	}
 
   FILE*istream;
   //ソケットをファイルストリームへと変換する
