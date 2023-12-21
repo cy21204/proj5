@@ -12,8 +12,16 @@ int main(){
 	int sockfd, new_sockfd;
 	//ソケットを作る
 	sockfd=socket(AF_INET, SOCK_STREAM, 0);
+	if(sockfd == -1){
+		perror("socket: ");
+	}
+	else{
+		printf("Created!\n");
+	}
 	//アドレスを作る
-	memset(&serv_addr, 0, sizeof(struct sockaddr_in));
+	if(memset(&serv_addr, 0, sizeof(struct sockaddr_in)) == NULL){
+		perror("memset: ");
+	}
 	serv_addr.sin_family=AF_INET;
 	serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
 	serv_addr.sin_port=htons(50000);
@@ -38,12 +46,11 @@ int main(){
 		perror("read;");
 	}
 	printf("%s\n", buff);
-	.........633
 	sleep(1);
 	if(close(new_sockfd) == -1){
 		perror("close: ");
 	}
-	if(close(sockfd) =																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											= -1){
+	if(close(sockfd) == -1){
 		perror("close: ");
 	}
 }
