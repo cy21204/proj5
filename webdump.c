@@ -10,8 +10,8 @@ struct sockaddr_in serv_addr;
 
 int main(){
 	int val;
-	int sockfd;
-  char buffer[1024];
+	int sockfd, new_sockfd;
+  char buff[1024];
   //ソケットを作る
 	sockfd=socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd == -1){
@@ -42,7 +42,7 @@ int main(){
 
   FILE*istream;
   //ソケットをファイルストリームへと変換する
-  istream=fopen(new_sockfd,"r+");
+  istream=fdopen(new_sockfd,"r+");
   if(istream == NULL){
     perror("fdopen:");
   }
@@ -50,9 +50,10 @@ int main(){
   if(setvbuf(istream,NULL,_IONBF,0) != 0){
     perror("setvbuf:");
   }
-
+/*
   while(fgets(buff, 1024, istream) == 0){
     printf("%s", buff);
   }
+ */
   fclose(istream);
 }
