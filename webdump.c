@@ -36,10 +36,12 @@ int main(){
 		printf("Socket binded!\n");
 	}
   //コネクションの要求を待つ
-  listen(sockfd,5);
+	listen(sockfd,5);
   //要求を受け入れる
-  new_sockfd=accept(sockfd,NULL,NULL);
-
+	new_sockfd=accept(sockfd,NULL,NULL);
+	if(new_sockfd == -1){
+		perror("accept: ");
+	}	
   FILE*istream;
   //ソケットをファイルストリームへと変換する
   istream=fdopen(new_sockfd,"r+");
@@ -50,10 +52,10 @@ int main(){
   if(setvbuf(istream,NULL,_IONBF,0) != 0){
     perror("setvbuf:");
   }
-/*
+
   while(fgets(buff, 1024, istream) == 0){
     printf("%s", buff);
   }
- */
+ 
   fclose(istream);
 }
