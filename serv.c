@@ -1,4 +1,3 @@
-	111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111	qAZXZ#include <arpa/inet.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -25,12 +24,12 @@ int main(){
 	else{
 		printf("Socket binded!\n");
 	}
-	
+
 	//コネクション要求を待たせる
 	if(listen(sockfd, 5) == -1){
 		perror("listen: ");
 	}
-	
+
 	new_sockfd = accept(sockfd, NULL, NULL);
 	if(new_sockfd == -1){
 		perror("accept: ");
